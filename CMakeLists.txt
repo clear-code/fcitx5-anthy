@@ -22,7 +22,7 @@ else()
     set(ANTHY_TARGET PkgConfig::Anthy)
 endif()
 
-include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
+include("${CMAKE_SYSROOT}${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-anthy\" -D_GNU_SOURCE)
 fcitx5_add_i18n_definition()
 
