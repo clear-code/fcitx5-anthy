@@ -8,6 +8,8 @@ include(FeatureSummary)
 include(GNUInstallDirs)
 include(ECMUninstallTarget)
 
+option(ENABLE_METAINFO "Enable AppStream metainfo" On)
+
 find_package(Fcitx5Core 5.0.6 REQUIRED)
 find_package(Fcitx5Module REQUIRED COMPONENTS Clipboard)
 find_package(Gettext REQUIRED)
@@ -31,7 +33,9 @@ add_subdirectory(src)
 add_subdirectory(icon)
 add_subdirectory(profile)
 
+if (ENABLE_METAINFO)
 fcitx5_translate_desktop_file(org.fcitx.Fcitx5.Addon.Anthy.metainfo.xml.in
     org.fcitx.Fcitx5.Addon.Anthy.metainfo.xml XML)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/org.fcitx.Fcitx5.Addon.Anthy.metainfo.xml" DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
+endif()
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
